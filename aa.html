@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var log = console.log.bind(this)
+
+        /*  function rot13(str) { // LBH QVQ VG!
+             // 请把你的代码写在这里
+             var regExp = /[A-Z]/;
+             var l = str.length;
+             str = str.toUpperCase()
+             var result = "";
+             for (var i = 0; i < l; i++) {
+                 var char = str[i]
+                 if (regExp.test(char)) {
+                     cCode = str.charCodeAt(i) - 13
+                     if (cCode < 65) {
+                         cCode += 26
+                     }
+                     let code = String.fromCharCode(cCode)
+                     result += code
+
+                 } else {
+                     result += str[i];
+                 }
+             }
+             return result;
+         }
+
+         rot13("SERR PBQR PNZC"); */
+
+        /* function numConvertToRoman(num) {
+            base = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+            str = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
+            var roman = "";
+            var i = 0;
+            while (num != 0) {
+                if (num >= base[i]) {
+                    num -= base[i];
+                    roman += str[i];
+                } else
+                    i++;
+            }
+            return roman;
+        }
+
+        function romanConVertToNum(str) {
+            var roman = {
+                "I": 1,
+                "V": 5,
+                "X": 10,
+                "L": 50,
+                "C": 100,
+                "D": 500,
+                "M": 1000,
+            }
+            var sumNum = 0
+            for (var i = 0; i < str.length; i++) {
+                if (i + 1 < str.length) {
+                    if (roman[str[i]] < roman[str[i + 1]]) {
+                        sumNum += roman[str[i + 1]] - roman[str[i]]
+                        i++
+                    } else {
+                        sumNum += (roman[str[i]])
+                    }
+                } else {
+                    sumNum += (roman[str[i]])
+                }
+            }
+            log(sumNum)
+        } */
+        var array = [45, 21, 42, 54, 59, 80, 90, 86, 58, 29]
+
+        function InsertionSort() {
+            var temp
+            var inner
+            for (var outer = 1; outer < 10; outer++) {
+                temp = array[outer]
+                inner = outer
+                while (inner > 0 && array[inner - 1] > temp) {
+                    var s = array[inner]
+                    var ss = array[inner - 1]
+                    array[inner] = array[inner - 1]
+
+                    inner -= 1
+                }
+                array[inner] = temp
+            }
+        }
+
+        InsertionSort()
+    </script>
+</body>
+
+</html>

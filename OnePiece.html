@@ -1,0 +1,416 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>OnePiece</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container-fluid {
+            width: 900px;
+            background-color: lightgray;
+            border-radius: 20px;
+            position: relative;
+        }
+        
+        p {
+            text-indent: 25px;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        .title .icon {
+            padding: 0 11px;
+        }
+        
+        .content {
+            width: 800px;
+            margin: 0 auto;
+        }
+        
+        #slide {
+            width: 60px;
+            height: 96px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            background: aliceblue;
+            float: right;
+            position: fixed;
+            top: 230px;
+        }
+        
+        #slide ul li.ctrl {
+            width: 60px;
+            height: 32px;
+            line-height: 32px;
+            text-align: center;
+            font-size: 12px;
+            color: #000;
+            font-weight: normal;
+            cursor: pointer;
+            transition: 0.2s;
+            position: relative;
+        }
+        
+        #slide ul li:hover {
+            background: #00A1D6;
+            color: #fff;
+        }
+        
+        .navigation {
+            position: absolute;
+            right: -30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <h2></h2>
+        <div class="row">
+            <img class="img-responsive center-block" src="img/logo.png" />
+        </div>
+        <h2>海贼王<small>（日本漫画家尾田荣一郎创作漫画）</small></h2>
+        <p>《海贼王》是日本漫画家尾田荣一郎作画的少年漫画作品，在《周刊少年Jump》1997年34号开始连载。改编的电视动画《海贼王》于1999年10月20日起在富士电视台首播。</p>
+        <p>2012年5月11日，《海贼王》获得第41回日本漫画家协会赏[1]  。截至2015年6月15日，《海贼王》以日本本土累计发行了3亿2086万6000本，被吉尼斯世界纪录官方认证为“世界上发行量最高的单一作者创作的系列漫画”[2]  。2017年7月21日，日本纪念日协会通过认证，将每年的7月22日设立为“ONE PIECE纪念日”[3]  。</p>
+
+        <hr />
+        <div class="navigation">
+            <div id="slide">
+                <ul>
+                    <li class="ctrl">创作背景</li>
+                    <li class="ctrl">故事介绍</li>
+                    <li class="ctrl">角色介绍</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-2">
+                <p>中文译名</p>
+            </div>
+            <div class="col-xs-4">
+                <p>海贼王</p>
+            </div>
+            <div class="col-xs-2">
+                <p>连载期间</p>
+            </div>
+            <div class="col-xs-4">
+                <p>1997年8月4日－连载中</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2">
+                <p>原版名称</p>
+            </div>
+            <div class="col-xs-4">
+                <p>ONE PIECE（ワンピース） </p>
+            </div>
+            <div class="col-xs-2">
+                <p>出版社</p>
+            </div>
+            <div class="col-xs-4">
+                <p><a href="#">集英社</a></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2">
+                <p>其他名称</p>
+            </div>
+            <div class="col-xs-4">
+                <p>航海王</p>
+            </div>
+            <div class="col-xs-2">
+                <p>丛书系列</p>
+            </div>
+            <div class="col-xs-4">
+                <p>JUMP COMICS </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2">
+                <p>作者</p>
+            </div>
+            <div class="col-xs-4">
+                <p><a href="https://baike.baidu.com/item/%E5%B0%BE%E7%94%B0%E8%8D%A3%E4%B8%80%E9%83%8E">尾田荣一郎</a></p>
+            </div>
+            <div class="col-xs-2">
+                <p>出版期间</p>
+            </div>
+            <div class="col-xs-4">
+                <p>1997年12月24日－连载中 </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2">
+                <p>类型</p>
+            </div>
+            <div class="col-xs-4">
+                <p>少年漫画</p>
+            </div>
+            <div class="col-xs-2">
+                <p>单行本册数</p>
+            </div>
+            <div class="col-xs-4">
+                <p>86卷（2017年8月4日）</p>
+            </div>
+        </div>
+        <hr />
+        <div class="row title">
+            <div class="col-xs-1 icon">
+                <img class="img-responsive" src="img/luffy.png" />
+            </div>
+            <div class="col-xs-11 titleText">
+                <h3><strong>创作背景</strong></h3>
+            </div>
+        </div>
+        <div class="content">
+            <hr />
+            <h4><em>创作灵感</em></h4>
+            <p>创作海贼故事是尾田荣一郎长久以来的梦想，他小时候一直很好奇为什么没有什么漫画以海贼为主题，他顶多只知道有《北海道小英雄》这部动画。他认为男孩长到某个年纪后应该就会想要出海寻宝才对。尾田从小我就很想看海贼的漫画，那个时候他对自己说，如果要自己画的话，那就一定会画海贼的故事。不管作品卖不卖得掉，他都是作好了心理准备才会这么选择的，纯粹就是他自己想看而已 。</p>
+            <p>尾田荣一郎在初一时，第一次画了海贼漫画，而尾田对孩子冒险所抱着的想象太丰富，就一本笔记本也画不完。他认识到用“一期完”的形式来画海贼漫画是不可能的，于是他决定要在《少年JUMP》上连载海贼漫画。</p>
+            <p>1997年，尾田荣一郎创作了海贼漫画《Romance Dawn》，这部一话完结的短篇漫画正是《航海王》的创作原型，后来这个名字还被《航海王》第一话作为副标题使用。当然，虽然两部漫画的主人公都叫路飞，性格却判若两人，剧情也并不相同。</p>
+            <p>然而，《Romance Dawn》最初因页数关系没法《少年JUMP》里刊登，于是他将《Romance Dawn》的内容删减，用“一期完”的形式在《少年JUMP》的本志和增刊上刊载了它，因为尾田当时已经决定将《Romance Dawn》作为《航海王》的雏形，他也准备以《航海王》的形式书写另一个版本的《Romance Dawn》。怀着两部海贼漫画，尾田荣一郎辞去了和月伸宏的《浪客剑心》助理一职，向连载方面发展。</p>
+            <hr />
+            <h4><em>连载期间</em></h4>
+            <p>尾田荣一郎小时候是看着鸟山明的《龙珠》长大的，那部作品对他影响巨大。当时尾田最大的心愿就是能在单行本中看到更多的集数。于是当他自己成为漫画家以后，坚持要让《航海王》的单行本分量更足。他小时候还有一个“打击”，他曾天真地以为《龙珠》是鸟山明一个人画的，但实际上漫画家都有助手协助。尾田第一次得知这个真相的时候，感觉“受骗了”。这个“打击”让他刻骨铭心，所以他成为漫画家之后竭尽所能不让孩子们失望。《航海王》画面中所有动态的部分都是尾田亲笔画的，助手只做一些很简单的工作。这是极少见的。</p>
+            <p>虽然尾田把这个故事画了十多年了，但的确从一开始他就想好了结局，这个结局只有几个主要编辑知道，绝不能透露。不过，虽然结局是已知的，中间的过程却未知，会有些什么故事，尾田老师自己也不知道。</p>
+            <p>尾田的煽情功力基本是他自己的，编辑在这点上很少能帮到他。编辑的作用是当一个读者，如果编辑没有被感动，那么尾田就要重新编他的故事。</p>
+            <p>关于作息时间，尾田在一次采访中透露：“每天凌晨2点睡5点起，每天共睡3小时。画完原稿后正好有一天可以休息，就睡一整天。”尾田已经这样坚持了十几年。</p>
+        </div>
+        <hr />
+        <div class="row title">
+            <div class="col-xs-1 icon">
+                <img class="img-responsive" src="img/nami.png" />
+            </div>
+            <div class="col-xs-11 titleText">
+                <h3><strong>故事介绍</strong></h3>
+            </div>
+        </div>
+        <div class="content">
+            <hr />
+            <h4><em>正片剧情</em></h4>
+            <p>拥有财富、名声、权力，这世界上的一切的男人 “海贼王”哥尔·D·罗杰，在被行刑受死之前说了一句话，让全世界的人都涌向了大海。“想要我的宝藏吗？如果想要的话，那就到海上去找吧，我全部都放在那里。”，世界开始迎接“大海贼时代”的来临。</p>
+            <p>时值“大海贼时代”，为了寻找传说中海贼王罗杰所留下的大秘宝“ONE PIECE”，无数海贼扬起旗帜，互相争斗。有一个梦想成为海盗的少年叫路飞，他因误食“恶魔果实”而成为了橡皮人，在获得超人能力的同时付出了一辈子无法游泳的代价。十年后，路飞为实现与因救他而断臂的香克斯的约定而出海，他在旅途中不断寻找志同道合的伙伴，开始了以成为海贼王为目标的伟大的冒险旅程。</p>
+            <div style="text-align:center">
+                <img style="margin:0 auto;" src="img/sss.png" />
+            </div>
+        </div>
+        <hr />
+        <div class="row title">
+            <div class="col-xs-1 icon">
+                <img class="img-responsive" src="img/zoro.png" />
+            </div>
+            <div class="col-xs-11 titleText">
+                <h3><strong>角色介绍</strong></h3>
+            </div>
+        </div>
+        <div class="content">
+            <hr />
+            <h4><em>草帽海贼团</em></h4>
+            <p>草帽海贼团中主人公蒙奇·D·路飞所集结的海贼团，旗帜图案是戴着草帽的骷髅。从东海进入伟大航路，经过“司法之岛事件”后，名扬天下。至香波地诸岛，全员被熊弹飞分散到世界各地。经由“冥王”雷利的指点，给船员们两年期间各自修炼。之后全员重新聚集于香波地诸岛，进入“新世界”。</p>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <td>介绍</td>
+                        <td>图片</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span><strong>“草帽”蒙其·D·路飞（モンキーD·ルフィ/Monkey D. Luffy）</strong></span><br />
+                            <span><strong>初次登场：</strong>漫画第1话</span><br />
+                            <span><strong>年龄：</strong>17岁→19岁</span><br />
+                            <span><strong>生日：</strong>5月5日</span><br />
+                            <span><strong>血型：</strong>F型</span><br />
+                            <span><strong>身高：</strong>172cm→174cm</span><br />
+                            <span><strong>故乡：</strong>东海·风车村</span><br />
+                            <span><strong>身份：</strong>草帽海贼团船长</span><br />
+                            <span><strong>喜欢的食物：</strong>所有美食，首先是肉。</span><br />
+                            <span><strong>爱好：</strong>喜欢探险，感兴趣于新奇怪异的事物</span><br />
+                            <span><strong>梦想：</strong>找到ONE PIECE，并成为海贼王。</span><br />
+                            <span><strong>恶魔果实：</strong>超人系橡胶果实</span><br />
+                            <span><strong>身世：</strong>父亲是革命军首领蒙奇·D·龙，爷爷是海军中将英雄卡普。</span><br />
+                            <span><strong>悬赏：</strong>3千万（可可亚西村事件）→1亿（阿拉巴斯坦事件）→3亿（司法岛事件）→4亿（顶上战争）→5亿（德雷斯罗萨篇）</span><br />
+                            <p>由于他的标志性特征是一顶草帽，因此常被直接称呼为“草帽”。梦想是找到传说中的ONE PIECE，成为海贼王。性格积极乐观，爱憎分明且十分重视伙伴，对任何危险的事物都超感兴趣。看似白痴，却是一个大智若愚型的无愧船长之职的人。和其他传统的海贼所不同的是，他并不会为了追求财富而无故杀戮，而是享受着身为海贼的冒险。</p>
+                        </td>
+                        <td>
+                            <img src="img/desluffy.jpg" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span><strong>“小贼猫”娜美（ナミ/Nami）</strong></span><br />
+                            <span><strong>初次登场：</strong>漫画第8话</span><br />
+                            <span><strong>年龄：</strong>18岁→20岁</span><br />
+                            <span><strong>生日：</strong>7月3日</span><br />
+                            <span><strong>血型：</strong>X型</span><br />
+                            <span><strong>身高：</strong>169cm→170cm</span><br />
+                            <span><strong>三围：</strong>B95▪W55▪H85</span><br />
+                            <span><strong>故乡：</strong>东海·可可亚西村</span><br />
+                            <span><strong>身份：</strong><del>阿龙海贼团测量员</del>→草帽海贼团航海士</span><br />
+                            <span><strong>喜欢的食物：</strong>都不错，但最喜欢橘子</span><br />
+                            <span><strong>爱好：</strong>钱，橘子</span><br />
+                            <span><strong>梦想：</strong>绘制出自己的世界地图、绘制全世界的航海图。</span><br />
+                            <span><strong>特征：</strong>左臂有风车和橘子样的纹身（纪念阿健和养母贝尔梅尔），左手手腕戴着一个手镯（姐姐诺琪高在娜美出海前送给她的）。</span><br />
+                            <span><strong>特长：</strong>绘制地图，观测天气，偷东西</span><br />
+                            <span><strong>悬赏：</strong>1600万（司法岛事件）→6600万（德雷斯罗萨篇）</span><br />
+                            <p>拥有橘色的短发（两年后为波浪长发）和左肩的刺青（风车与橘子的图案）。使用棍术，现在武器为“魔法天候棒”。头脑聪明又机灵，精通气象学和航海术，擅长偷术，能用身体感知天气，完美指示航路，是个能精确画出航海图的天才航海士。本质上是个细心、善良、重视感情、嫉恶如仇、偶尔有些温柔的能干的女性。最喜欢钱和橘子，梦想是要画出全世界的地图。</p>
+                        </td>
+                        <td>
+                            <img src="img/desnami.jpg" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span><strong>“海贼猎人”罗罗诺亚·索隆（ロロノア·ゾロ/Roronoa Zoro）</strong></span><br />
+                            <span><strong>初次登场：</strong>漫画第3话</span><br />
+                            <span><strong>年龄：</strong>19岁→21岁</span><br />
+                            <span><strong>生日：</strong>11月11日</span><br />
+                            <span><strong>血型：</strong>XF型</span><br />
+                            <span><strong>身高：</strong>178cm→181cm</span><br />
+                            <span><strong>故乡：</strong>东海·霜月村</span><br />
+                            <span><strong>身份：</strong>东海海贼赏金猎人→草帽海贼团战斗员</span><br />
+                            <span><strong>喜欢的食物：</strong>白米，海兽的肉，适合下酒的食物</span><br />
+                            <span><strong>爱好：</strong>睡觉、修炼、喝酒。</span><br />
+                            <span><strong>梦想：</strong>世界第一大剑豪</span><br />
+                            <span><strong>缺点：</strong>路痴</span><br />
+                            <span><strong>悬赏：</strong>6千万（阿拉巴斯坦事件）→1亿2000万（司法岛事件）→3亿2000万（德雷斯罗萨篇）</span><br />
+                            <p>爱喝酒，爱睡觉，讲义气，海贼第一超级大路痴。为了小时候与挚友的约定而踏上了前往世界第一剑士的道路，随后成为路飞出海后遇到的第一个伙伴。在初次败给世界第一剑士“鹰眼米霍克”后向路飞发誓永不再败，并且更加努力的锻炼自己。两年后的他成功与伙伴们汇合，并且为了实现自己的梦想，奔赴强者如云的新世界。</p>
+                        </td>
+                        <td>
+                            <img src="img/deszoro.jpg" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span><strong>“恶魔之子”妮可·罗宾（ニコ·ロビン/Nico Robin）</strong></span><br />
+                            <span><strong>初次登场：</strong>漫画第114话</span><br />
+                            <span><strong>年龄：</strong>28岁→30岁</span><br />
+                            <span><strong>生日：</strong>11月11日</span><br />
+                            <span><strong>血型：</strong>XF型</span><br />
+                            <span><strong>身高：</strong>188cm</span><br />
+                            <span><strong>三围：</strong>B99▪W59▪H89</span><br />
+                            <span><strong>故乡：</strong>西海▪奥哈拉岛（已灭）</span><br />
+                            <span><strong>身份：</strong><del>奥哈拉岛考古学家</del>→……→<del>巴洛克工作社副社长Miss.AllSunday</del>→草帽海贼团考古学家</span><br />
+                            <span><strong>喜欢的食物：</strong>三明治，不太甜的蛋糕，适合咖啡的食物</span><br />
+                            <span><strong>爱好：</strong>睡觉、修炼、喝酒。</span><br />
+                            <span><strong>特长：</strong>考古</span><br />
+                            <span><strong>梦想：</strong>寻找真正的“历史正文”，并且在历史正文碑的指引下，到达伟大航道的尽头“拉夫德鲁”。</span><br />
+                            <span><strong>恶魔果实：</strong>超人系花花果实</span><br />
+                            <span><strong>悬赏：</strong>7900万（奥哈拉事件[20]  ）→8000万（司法岛事件）→1亿3000万（德雷斯罗萨篇）</span><br />
+                            <p>年仅8岁就被悬赏千万的奥哈拉幸存者。在巴洛克解散后，加入草帽海贼团。个性冷静，擅长考古学以及暗杀，学识渊博，对于世界政府、海盗、航海一事都知道的很详细。目标是找到真正的历史正文，绝不饶恕践踏历史文物的人。</p>
+                        </td>
+                        <td>
+                            <img src="img/desrobin.jpg" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <h1></h1>
+    </div>
+    <script>
+        var log = console.log.bind(this)
+        var nav = document.querySelector("#slide")
+        var navTop = nav.offsetHeight
+        nav.style.top = (window.innerHeight - navTop) / 2 + "px"
+
+        var navs = document.querySelectorAll(".ctrl")
+        var contents = document.querySelectorAll(".row.title")
+
+        /* var _interval = setInterval
+
+        var timerID = setInterval = function(callback, timeout, param) {        
+            var args = Array.prototype.slice.call(arguments, 2);        
+            var _cb = function() {            
+                callback.apply(null, args);        
+            }
+            _interval(_cb, timeout)
+        } */
+
+        var timerID
+
+        var curY = 0
+
+        scrollUp = function(deltaY) {
+            //log("Up")
+            curY -= deltaY
+            window.scrollTo(0, curY)
+        }
+
+        scrollDown = function(deltaY) {
+            //log("Down")
+            curY += deltaY
+            window.scrollTo(0, curY)
+        }
+
+        setScroll = function(y) {
+            //log("Scroll")
+            curY = window.scrollY
+            var deltaY = Math.abs(y - 30 - curY) / 50
+            var isDown = y - curY > 0 ? true : false
+                //log("Running")
+            if (deltaY < 1) {
+                window.scrollTo(0, y - 30)
+                clearInterval(timerID)
+                return
+            }
+            if (isDown) { //当前y小于目标的y，往下滚
+                /*  log(isDown)
+                 while (curY < y) {
+                     curY += deltaY
+                     log("down", curY, deltaY)
+                     window.scrollTo(0, curY)
+                     if (curY <= y) {
+                         curY = y
+                         window.scrollTo(0, curY)
+                         break
+                     }
+                 } */
+                scrollDown(deltaY)
+            } else {
+                /*  log(isDown)
+                 while (curY > y) {
+                     curY -= deltaY
+                     log("up", curY, deltaY)
+                     window.scrollTo(0, curY)
+                     if (curY >= y) {
+                         curY = y - 30
+                         window.scrollTo(0, curY)
+                         break
+                     }
+                 } */
+                scrollUp(deltaY)
+            }
+        }
+
+        for (var i = 0; i < navs.length; i++) {
+            var n = navs[i]
+            n.i = i
+            n.onclick = function() {
+                var y = contents[this.i].offsetTop;
+                timerID = window.setInterval(() => setScroll(y), 1000 / 60)
+            }
+        }
+
+        window.addEventListener("wheel", function(event) {
+            clearInterval(timerID)
+        })
+        window.addEventListener("resize", function(event) {
+            log(event)
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>点阵时钟</title>
+    <style>
+        #id-canvas {
+            width: 900px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="id-canvas"></canvas>
+    <script>
+        var log = console.log.bind(console)
+        let canvas = document.querySelector("#id-canvas");
+        let ctx = canvas.getContext("2d")
+        let perBlockSize = {
+            w: 1,
+            h: 1,
+        }
+
+        function position(h, v) {
+            p = {
+                x: (11 * perBlockSize.w + 3 * perBlockSize.w) * h,
+                y: (15 * perBlockSize.h + 3 * perBlockSize.h) * v,
+            }
+            return p
+        }
+
+        let sevenSegment = {
+            1: {
+                ib: 0,
+                ie: 11,
+                jb: 0,
+                je: 3,
+            },
+            2: {
+                ib: 0,
+                ie: 11,
+                jb: 6,
+                je: 9,
+            },
+            3: {
+                ib: 0,
+                ie: 11,
+                jb: 12,
+                je: 15,
+            },
+            4: {
+                ib: 0,
+                ie: 3,
+                jb: 0,
+                je: 9,
+            },
+            5: {
+                ib: 0,
+                ie: 3,
+                jb: 6,
+                je: 15,
+            },
+            6: {
+                ib: 8,
+                ie: 11,
+                jb: 0,
+                je: 9,
+            },
+            7: {
+                ib: 8,
+                ie: 11,
+                jb: 6,
+                je: 15,
+            },
+            0: {
+                ib: 4,
+                ie: 7,
+                jb: 2,
+                je: 5,
+            },
+            9: {
+                ib: 4,
+                ie: 7,
+                jb: 10,
+                je: 13,
+            }
+        }
+
+        let numberSegment = {
+            0: [1, 3, 4, 5, 6, 7],
+            1: [6, 7],
+            2: [1, 2, 3, 5, 6],
+            3: [1, 2, 3, 6, 7],
+            4: [2, 4, 6, 7],
+            5: [1, 2, 3, 4, 7],
+            6: [1, 2, 3, 4, 5, 7],
+            7: [1, 6, 7],
+            8: [1, 2, 3, 4, 5, 6, 7],
+            9: [1, 2, 3, 4, 6, 7],
+        }
+
+        function drawOneSegement(segement, p) {
+            let ib = segement.ib
+            let ie = segement.ie
+            let jb = segement.jb
+            let je = segement.je
+            for (let i = ib; i < ie; i++) {
+                for (let j = jb; j < je; j++) {
+                    if (i % 2 == 0 && j % 2 == 0) {
+                        ctx.fillRect(i * perBlockSize.w + p.x, j * perBlockSize.h + p.y, perBlockSize.w, perBlockSize.h)
+                    }
+                }
+            }
+        }
+
+        function drawOneNumber(num, coordinate) {
+            let segments = numberSegment[num]
+            let p = position(coordinate[0], coordinate[1])
+            for (let i = 0; i < segments.length; i++) {
+                let n = segments[i];
+                let segment = sevenSegment[n]
+                drawOneSegement(segment, p)
+            }
+        }
+
+        function drawColon(coordinate) {
+            let p = position(coordinate[0], coordinate[1])
+            drawOneSegement(sevenSegment[0], p)
+            drawOneSegement(sevenSegment[9], p)
+        }
+
+        let timer = window.setInterval(function() {
+            ctx.clearRect(0, 0, 600, 300)
+            let d = new Date()
+            let h = d.getHours()
+            drawOneNumber(Math.floor(h / 10), [0, 0])
+            drawOneNumber(h % 10, [1, 0])
+
+            drawColon([2, 0])
+
+            let m = d.getMinutes();
+            drawOneNumber(Math.floor(m / 10), [3, 0])
+            drawOneNumber(m % 10, [4, 0])
+
+            drawColon([5, 0])
+
+            let s = d.getSeconds()
+            drawOneNumber(Math.floor(s / 10), [6, 0])
+            drawOneNumber(s % 10, [7, 0])
+        }, 1000 / 2)
+    </script>
+</body>
+
+</html>

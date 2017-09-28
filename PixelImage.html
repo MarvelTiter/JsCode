@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        window.requesetAnimFrame = function() {
+            return window.requesetAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                window.oRequestAnimationFrame ||
+                window.msRequestAnimationFrame ||
+                function(fn) {
+                    window.setTimeout(fn, 1000 / 60);
+                };
+        }();
+
+        function main() {
+
+        }
+
+        main.prototype = {
+            initial: function() {
+                if (this.canvas == null) {
+                    this.canvas = this.getCanvas()
+
+                } else {
+                    this.canvas = document.querySelector("Canvas")
+                }
+                this.ctx = this.canvas.getContext('2d')
+
+                this.particles = []
+
+                this.setCvsStyle()
+                this.fillText()
+                this.getImageData()
+            },
+            getCanvas: function() {
+                let canvas = document.createElement('canvas');
+                document.body.appendChild(canvas);
+                this.canvas = canvas;
+                return canvas;
+            },
+            setCvsStyle: function() {
+                this.canvas.width = window.innerWidth
+                this.canvas.height = window.innerHeight
+            },
+            fillText: function() {
+                this.ctx.textAlign = 'center';
+                this.ctx.textBaseline = 'middle';
+                this.ctx.font = '200px sans-serif';
+                this.ctx.fillText('操', this.canvas.width / 2, this.canvas.height / 3);
+            },
+            getImageData: function() {
+                let imgData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height)
+                for (let x = 0; x < imgData.width; x++) {
+                    for (let y = 0; y < imgData.height; y++) {
+                        let index = 4 * (y * imgData.width + x)
+                        if (imgData.data[index + 3] > 128) {
+                            this.particles.push(new Particle(x, y, this.canvas))
+                        }
+                    }
+                }
+            },
+            loop: function() {
+                let _this = this;
+
+                requesetAnimFrame(function() {
+                    _this.loop()
+                });
+                this.doFrame();
+            },
+            doFrame: function() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                for (let i = 0; i < this.particles.length; i++) {
+                    let p = this.particles[i];
+                    p.update();
+                }
+            },
+        }
+
+        function Particle(x, y, canvas) {
+            this.endX = x;
+            this.endY = y;
+            this.canvas = canvas;
+            this.ctx = this.canvas.getContext('2d');
+            this.x = 0;
+            this.y = 0;
+
+            this.vx = Math.random() * 10 - 5;
+            this.vy = Math.random() * 10 - 5;
+        }
+
+        Particle.prototype = {
+            move: function() {
+                let disX = this.endX - this.x;
+                let disY = this.endY - this.y;
+                let dis = Math.sqrt(Math.pow(disX, 2) + Math.pow(disY, 2));
+                let force = dis * .01;
+                let angle = Math.atan2(disY, disX); // atan2(x, y) 返回点(x, y)到x 轴的弧度
+
+                this.vx *= 0.92;
+                this.vy *= .92;
+
+                //
+                this.x += this.vx;
+                this.y += this.vy;
+            },
+            render: function() {
+                this.ctx.fillStyle = '#111';
+                this.ctx.fillRect(this.x, this.y, 4, 4);
+            },
+            update: function() {
+                this.move();
+                this.render();
+            }
+        }
+        main()
+    </script>
+</body>
+
+</html>

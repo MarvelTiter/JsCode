@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="city.js"></script>
+    <title>Weather</title>
+    <style>
+        .container {
+            width: 700px;
+            margin: 50px auto;
+            border: 1px solid black;
+            border-radius: 10px;
+            background-color: white;
+        }
+        
+        .row div {
+            height: 50px;
+        }
+        
+        .today {
+            height: 100px;
+        }
+        
+        .parent {
+            width: 120px;
+            height: 30px;
+            overflow: hidden;
+            border: solid 1px #ccc;
+        }
+        
+        .parent select {
+            background: transparent;
+            border: none;
+            padding-left: 10px;
+            width: 120px;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="today">
+
+        </div>
+        <div class="other">
+            <div class="row">
+                <div class="col-xs-2"><span>星期</span></div>
+                <div class="col-xs-2"><span>图标</span></div>
+                <div class="col-xs-4"><span>温度</span></div>
+                <div class="col-xs-4"><span>风力</span></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2"><span>星期</span></div>
+                <div class="col-xs-2"><span>图标</span></div>
+                <div class="col-xs-4"><span>温度</span></div>
+                <div class="col-xs-4"><span>风力</span></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2"><span>星期</span></div>
+                <div class="col-xs-2"><span>图标</span></div>
+                <div class="col-xs-4"><span>温度</span></div>
+                <div class="col-xs-4"><span>风力</span></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2"><span>星期</span></div>
+                <div class="col-xs-2"><span>图标</span></div>
+                <div class="col-xs-4"><span>温度</span></div>
+                <div class="col-xs-4"><span>风力</span></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2"><span>星期</span></div>
+                <div class="col-xs-2"><span>图标</span></div>
+                <div class="col-xs-4"><span>温度</span></div>
+                <div class="col-xs-4"><span>风力</span></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2"><span>星期</span></div>
+                <div class="col-xs-2"><span>图标</span></div>
+                <div class="col-xs-4"><span>温度</span></div>
+                <div class="col-xs-4"><span>风力</span></div>
+            </div>
+        </div>
+        <!-- end other -->
+        <div class="row">
+            <div class="col-xs-3 col-xs-offset-3">
+                <input type="text" class "default" style="height:30px;">
+            </div>
+            <div class="col-xs-6">
+                <select name="city" id="city" style="height:30px;"></select>
+            </div>
+        </div>
+
+    </div>
+    <!-- end container -->
+    <script>
+        var log = console.log.bind(this)
+
+        var cbbCity = document.querySelector("#city")
+
+        function addItems() {
+            var s = ""
+            for (var c of cities) {
+                s += "<option value ='" + c.cityid + "'>" + c.city + "</option>"
+            }
+            cbbCity.innerHTML = s
+        }
+
+        function Ajax(config) {
+            var xmlHttp
+            if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlHttp = new XMLHttpRequest()
+            } else { // code for IE6, IE5
+                xmlHttp = new ActiveXObject("Microsoft.XMLHTTP")
+            }
+            config.type = config.type || "GET"
+            config.url = config.url || ""
+            config.data = config.data || null
+            config.isAsync = config.isAsync || true
+            config.success = config.success || function() {}
+
+            //初始化参数
+            var params = [];
+            for (var key in config.data) {
+                params.push(key + '=' + config.data[key])
+            }
+            var postData = params.join('&')
+            log(config.url + "?" + postData)
+
+            //请求
+            switch (config.type) {
+                case "GET":
+                    let url = config.url + "?" + postData
+                    xmlHttp.open(config.type, url, config.isAsync)
+                    xmlHttp.send();
+                    break
+                case "POST":
+                    xmlHttp.open(config.type, config.url, config.isAsync)
+                    xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=utf-8')
+                    xmlHttp.send(postData)
+                    break
+            }
+
+            //回调
+            xmlHttp.onreadystatechange = function() {
+                log(xmlHttp.readyState, xmlHttp.status)
+                if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                    config.success(xmlHttp.responseText)
+                }
+            }
+        }
+
+        function AcrossAccess(config) {
+            config.type = config.type || "GET"
+            config.url = config.url || ""
+            config.data = config.data || null
+            config.callBack = config.callBack || function() {}
+
+            //初始化参数
+            var postData = formatParams(config.data)
+
+            log(config.url + "?" + postData)
+
+            var callBackName = ("jsonp_" + Math.random()).replace(".", "")
+            callBack = callBackName
+            var script = document.createElement("script")
+            var oHead = document.getElementsByTagName('head')[0];
+
+            oHead.appendChild(script)
+            window[callBackName] = function(json) {
+                config.callBack()
+                log(json)
+            }
+
+            script.src = config.url + "?callBack=" + callBackName + "&" + postData
+
+        }
+
+        function formatParams(data) {
+            var params = []
+            for (var p in data) {
+                params.push(p + '=' + data[p])
+            }
+            return params.join('&')
+        }
+
+        addItems()
+
+        var requesturl = "http://aider.meizu.com/app/weather/listWeather"
+
+        cbbCity.onchange = function() {
+            var cid = cbbCity.selectedOptions[0].value
+            Ajax({
+                url: requesturl,
+                data: {
+                    cityIds: cid
+                },
+                success: function() {
+                    log("sss")
+                },
+            })
+        }
+    </script>
+</body>
+
+</html>

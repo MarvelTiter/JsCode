@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Document</title>
+    <style>
+        .Box {
+            width: 300px;
+            margin: auto auto;
+        }
+        
+        #txtSearch {
+            display: none;
+            width: 0px;
+        }
+        
+        #btnSearch {}
+    </style>
+</head>
+
+<body>
+    <div class="Box">
+        <input class="form-control" type="text" id="txtSearch" />
+        <button class="btn btn-default" type="button" id="btnSearch"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+    </div>
+    <script>
+        var log = console.log.bind(this)
+
+        var btnSearch = document.querySelector("#btnSearch")
+        var txtSearch = document.querySelector("#txtSearch")
+        var isOpen = false
+
+        btnSearch.onclick = function() {
+            if (!isOpen) {
+                txtSearch.style.display = "inline"
+                isOpen = true
+                var timer = window.setInterval(function() {
+                    var w = this.offsetWidth
+                    if (w > 230) {
+                        clearInterval(timer)
+                    }
+                    this.style.width = w + 10 + "px"
+                }.bind(txtSearch), 1000 / 60)
+            }
+        }
+    </script>
+</body>
+
+</html>

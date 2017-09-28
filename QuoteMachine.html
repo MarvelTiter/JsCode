@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Quote</title>
+    <style>
+        .container {
+            width: 600px;
+            background-color: white;
+            border-radius: 10px;
+            margin: 100px auto;
+            text-align: center;
+            position: relative;
+        }
+        
+        .contentBox {
+            width: 400px;
+            position: relative;
+            margin: auto;
+        }
+        
+        #txtQuote {
+            font-size: 24px;
+            word-wrap: break-word;
+        }
+        
+        #txtAuthor {
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>耳根语录 <small>仙逆、求魔、我欲封天</small></h1>
+        <br>
+        <br>
+        <div class="contentBox">
+            <div id="quote" style="height:150px;text-align:left">
+                <span id="txtQuote"></span>
+            </div>
+            <div style="height:50px;text-align:right;">
+                <span id="txtAuthor"></span>
+            </div>
+        </div>
+        <div>
+            <button class="btn btn-default" id="btnQuote">Quote</button>
+        </div>
+        <br><br>
+    </div>
+    <script>
+        var log = console.log.bind(this)
+        var data = [{
+            Author: "耳根《仙逆》",
+            Content: "心亡，则忘。",
+        }, {
+            Author: "耳根《我欲封天》",
+            Content: "山本无忧，因雪白头。水本无愁，因风起皱。",
+        }, {
+            Author: "耳根《仙逆》",
+            Content: "魂若悲，千里思亲归！魂若归，墓前心泪悲。",
+        }, {
+            Author: "耳根《仙逆》",
+            Content: "这雨生于天，死于地，中间的过程便是人生。",
+        }, {
+            Author: "耳根《仙逆》",
+            Content: "记忆是掌心的水，不论你摊开还是握紧，终究还是会从指缝中一滴一滴流淌干净。",
+        }, {
+            Author: "耳根《求魔》",
+            Content: "魔前一叩三千年，回首凡尘不做仙。只为她，掌缘生灭。",
+        }, {
+            Author: "耳根《我欲封天》",
+            Content: "落叶虽美，只活一世。",
+        }, ]
+
+        function random(min, max) {
+            return min + ~~(Math.random() * (max - min))
+        }
+
+        function rColor() {
+            var rcolor = "#" + random(0, 1 << 24).toString(16).slice(-6)
+            document.body.style.backgroundColor = rcolor;
+            btnQuote.style.backgroundColor = rcolor;
+        }
+
+        var btnQuote = document.querySelector("#btnQuote")
+        var txtQuote = document.querySelector("#txtQuote")
+        var txtAuthor = document.querySelector("#txtAuthor")
+
+        rColor()
+
+        btnQuote.onclick = function() {
+            var d = data[random(0, data.length)]
+            txtQuote.innerText = "\"" + d.Content + "\"";
+            txtAuthor.innerText = "--- " + d.Author
+            rColor()
+            log(txtQuote.offsetHeight)
+        }
+    </script>
+</body>
+
+</html>

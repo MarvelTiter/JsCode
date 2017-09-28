@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="rain.js"></script>
+    <title>Document</title>
+    <style>
+        img {
+            width: 630px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="img/445.png" alt="">
+    <script>
+        var img = document.querySelector("img")
+
+        function Go() {
+            var engine = new RainyDay({
+                image: img,
+                crop: [0, 0, 50, 60],
+                blur: 10,
+                opacity: 1,
+            })
+
+            engine.rain(
+                [
+                    [1, 0, 20],
+                    [3, 3, 1],
+                ],
+                100
+            )
+        }
+
+        img.onload = function() {
+            Go()
+        }
+    </script>
+</body>
+
+</html>

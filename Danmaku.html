@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>弹幕</title>
+    <style>
+        body {
+            width: 100%;
+        }
+        
+        #danMakuContainer {
+            width: 900px;
+            height: 500px;
+            border: 1px solid black;
+            margin: 10px auto;
+            position: relative;
+        }
+        
+        #inputArea {
+            width: 400px;
+            margin: 10px auto;
+        }
+        
+        span {
+            position: absolute;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="danMakuContainer">
+        <video style="width:100%;height:100%;" src="D:\Multi-media\动画\continuum for phone.mp4" controls=true></video>
+    </div>
+    <div id="inputArea">
+        <div class="input-group">
+            <input id="txtInput" type="text" class="form-control" placeholder="装载弹幕(●ˇ∀ˇ●)">
+            <span class="input-group-btn">
+                <button id="btnGO" class="btn btn-default" type="button">Go!</button>
+            </span>
+        </div>
+    </div>
+    <script>
+        var log = console.log.bind(this)
+        var btnGO = document.querySelector("#btnGO")
+        var txtInput = document.querySelector("#txtInput")
+        var container = document.querySelector("#danMakuContainer")
+
+        var random = function(min, max) {
+            var num = Math.random() * (max - min) + min
+            return Math.ceil(num)
+        }
+
+        //生成span标签
+        var danMakuObject = function(input) {
+            var span = document.createElement("span")
+            span.style.class = "danmaku"
+            span.style.top = random(0, 380) + "px"
+            span.style.left = 900 + "px"
+            span.style.fontSize = random(15, 30) + "px"
+            span.style.color = "#" + random(0, 16777215).toString(16).slice(-6)
+            span.innerText = input
+
+            o = {
+                p: span,
+                speed: random(2, 6),
+            }
+
+            o.move = function() {
+                o.p.style.left = o.p.offsetLeft - o.speed + "px"
+                this.timer = window.setInterval(function() {
+                    this._left = this.p.offsetLeft
+                    if (this._left < 0) {
+                        clearInterval(this.timer)
+                        this.p.parentNode.removeChild(this.p)
+                        return
+                    }
+                    this.p.style.left = this._left - this.speed + "px"
+                }.bind(o), 1000 / 60)
+            }
+            return o
+        }
+
+        //检查文本框输入合法性
+        var inputVerify = function(input) {
+            var pattern = /^\s*$/
+            var matchStr = input.match(pattern)
+            if (matchStr == null) {
+                return true
+            } else if (matchStr.length > 0) { //有匹配结果，length为1
+                return false
+            }
+        }
+
+        btnGO.onclick = function() {
+            var inputStr = txtInput.value
+            if (inputVerify(inputStr)) {
+                var dp = danMakuObject(inputStr)
+                container.appendChild(dp.p)
+                dp.move()
+            } else {
+                alert("输入无效")
+            }
+        }
+    </script>
+</body>
+
+</html>
